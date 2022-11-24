@@ -26,10 +26,10 @@ export class LitAutos extends LitElement {
   render() {
     return html`
       <div>
-        <label>Name</label> <input id="autoName" /> <label>Year</label
-        ><input id="autoYear" /> <label>Brand</label><input id="autoBrand" />
-        <label>Version</label><input id="autoVersion" />
-        <button @click="${this.saveData}">Registrar</button>
+        <label>Name: </label> <input id="autoName" /> <label>Year: </label
+        ><input id="autoYear" /> <label>Brand: </label><input id="autoBrand" />
+        <label>Version: </label><input id="autoVersion" />
+        <button @click="${this.saveData}">Register</button>
       </div>
       <show-autos
         name=${this.name}

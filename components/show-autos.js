@@ -26,6 +26,18 @@ export default class ShowAutos extends LitElement {
 
   render() {
     return html` <div>${this.saveData()}</div>
+    <div>
+    ${this.auto.map(eachAuto => 
+    html`
+  <div class= "card" >
+      <div class= "card-content">
+          <h2>${eachAuto.name}</h2>
+          <p>${eachAuto.brand}</p>
+      </div>
+
+  </div>
+  `)}
+    </div>
 
       }`;
   }
