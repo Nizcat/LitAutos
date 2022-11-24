@@ -4,6 +4,10 @@ import "./components/show-autos";
 export class LitAutos extends LitElement {
   static properties = {
     autos: { type: Object },
+    name: {type: String},
+    year: {type: String},
+    brand: {type: String},
+    version: {type: String},
   };
 
   constructor() {
@@ -27,18 +31,19 @@ export class LitAutos extends LitElement {
         <label>Version</label><input id="autoVersion" />
         <button @click="${this.saveData}">Registrar</button>
       </div>
+      <show-autos
+        name=${this.name}
+        year=${this.year}
+        brand=${this.brand}
+        version=${this.name}
+      ></show-autos>
     `;
   }
-
   saveData() {
-    this.autos.push({
-      name: this.shadowRoot.getElementById("autoName").value,
-      year: this.shadowRoot.getElementById("autoYear").value,
-      brand: this.shadowRoot.getElementById("autoBrand").value,
-      version: this.shadowRoot.getElementById("autoVersion").value,
-    });
-    console.log(this.autos);
+    this.name = this.shadowRoot.getElementById("autoName").value;
+    this.year = this.shadowRoot.getElementById("autoYear").value;
+    this.brand = this.shadowRoot.getElementById("autoBrand").value;
+    this.version = this.shadowRoot.getElementById("autoVersion").value;
   }
-  
 }
 customElements.define("lit-autos", LitAutos);

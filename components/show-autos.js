@@ -1,18 +1,43 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css } from "lit";
 
-export class ShowAutos extends LitElement {
-    static styles = [
-        css`
-            :host {
-                display: block;
-            }
-        `
-    ];
+export default class ShowAutos extends LitElement {
+  static properties = {
+    auto: { type: Object },
+    name: { type: String },
+    year: { type: String },
+    brand: { type: String },
+    version: { type: String },
+  };
 
-    render() {
-        return html`
-        
-        `;
-    }
+  constructor() {
+    super();
+    this.auto = [{}];
+    this.saveData();
+  }
+ 
+
+  static styles = [
+    css`
+      :host {
+        display: block;
+      }
+    `,
+  ];
+
+  render() {
+    return html` <div>${this.saveData()}</div>
+
+      }`;
+  }
+  saveData() {
+    console.log(this.name, this.year, "las variables");
+    this.auto.push({
+      name: this.name,
+      year: this.year,
+      brand: this.brand,
+      version: this.version,
+    });
+    console.log(this.auto);
+  }
 }
-customElements.define('show-autos', ShowAutos);
+customElements.define("show-autos", ShowAutos);
