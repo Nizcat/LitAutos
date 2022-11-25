@@ -28,6 +28,7 @@ export default class ShowAutos extends LitElement {
 
   static styles = [
     css`
+    
       :host {
         display: block;
       }
@@ -38,23 +39,28 @@ export default class ShowAutos extends LitElement {
       }
       .autosContainer {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr ;
-        grid-template-rows: 1fr 1fr 1fr ;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
         grid-gap: 2em;
-        justify-items:center;
-        
+        margin-top: 2em;
+        justify-items: center;
+
         width: 80vw;
       }
       .card {
-        border: solid .5em gray
+        background-color: white;
+        padding: 1em;
+        box-shadow: 0.5em 0.5em #d7d5d5;
       }
       .autoInfo {
+        height: fit-content;
         display: grid;
-        grid-template-columns: 1fr 1fr  ;
-        grid-template-rows: 1fr 1fr ;
-        justify-items:center;
-        align-items:center;
+        grid-template-columns: 60% 40%;
+        grid-template-rows: 3em 2em;
+        justify-items: center;
+        align-items: center;
       }
+     
     `,
   ];
 
@@ -68,10 +74,10 @@ export default class ShowAutos extends LitElement {
               <div class="card">
                 <div class="card-content">
                   <div class="autoInfo">
-                  <h2>Name: ${eachAuto.name}</h2>
-                  <p>Brand: ${eachAuto.brand}</p>
-                  <p>Version: ${eachAuto.version}</p>
-                  <p>Year: ${eachAuto.year}</p>
+                    <h2 >${eachAuto.name}</h2>
+                    <p >Brand: ${eachAuto.brand}</p>
+                    <p >Version: ${eachAuto.version}</p>
+                    <p >Year: ${eachAuto.year}</p>
                   </div>
                   <img class="autoImage" src=${eachAuto.img} />
                 </div>

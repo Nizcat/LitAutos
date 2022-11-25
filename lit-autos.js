@@ -13,9 +13,9 @@ export class LitAutos extends LitElement {
   constructor() {
     super();
     this.autos = [{}];
-    this.name = "Vocho";
+    this.name = "Cavalier";
     this.year = "1969";
-    this.brand = "VW";
+    this.brand = "GM";
     this.version = "Classic";
     this.img =
       "https://assets.catawiki.nl/assets/2020/1/22/b/8/7/b8756b1a-0561-4f99-a2ec-edfe65842c38.jpg";
@@ -27,6 +27,7 @@ export class LitAutos extends LitElement {
         display: flex;
         flex-direction: column;
         align-items: center;
+        background-color: #f3eded;
       }
       .registerForm {
         background-image: url("https://media.autoexpress.co.uk/image/private/s--jf7Mv70j--/v1562251437/autoexpress/images/car_photo_259188.jpg");
@@ -43,6 +44,8 @@ export class LitAutos extends LitElement {
       .registerButton {
         background-color: white;
         border-radius: 20px;
+        font-size: 0.8em;
+        border: none;
       }
     `,
   ];
