@@ -15,11 +15,11 @@ export default class ShowAutos extends LitElement {
     super();
     this.auto = [
       {
-        name: "Vocho",
-        year: "1969",
-        brand: "VW",
-        version: "Classic",
-        img: "https://assets.catawiki.nl/assets/2020/1/22/b/8/7/b8756b1a-0561-4f99-a2ec-edfe65842c38.jpg",
+        name: "",
+        year: "",
+        brand: "",
+        version: "",
+        img: "",
       },
     ];
 
@@ -68,10 +68,12 @@ export default class ShowAutos extends LitElement {
     return html`
       <div>${(this.saveData(), this.pickAnImage())}</div>
       <div class="autosContainer">
+       
         ${this.auto.map(
           (eachAuto) =>
-            html`
-              <div class="card">
+           
+             eachAuto.name != ""?
+        html`<div class="card">
                 <div class="card-content">
                   <div class="autoInfo">
                     <h2 >${eachAuto.name}</h2>
@@ -81,9 +83,8 @@ export default class ShowAutos extends LitElement {
                   </div>
                   <img class="autoImage" src=${eachAuto.img} />
                 </div>
-              </div>
-            `
-        )}
+              </div>`
+        :html`` )}
       </div>
     `;
   }
