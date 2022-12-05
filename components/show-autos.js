@@ -28,7 +28,6 @@ export default class ShowAutos extends LitElement {
 
   static styles = [
     css`
-    
       :host {
         display: block;
       }
@@ -60,7 +59,6 @@ export default class ShowAutos extends LitElement {
         justify-items: center;
         align-items: center;
       }
-     
     `,
   ];
 
@@ -68,23 +66,21 @@ export default class ShowAutos extends LitElement {
     return html`
       <div>${(this.saveData(), this.pickAnImage())}</div>
       <div class="autosContainer">
-       
-        ${this.auto.map(
-          (eachAuto) =>
-           
-             eachAuto.name != ""?
-        html`<div class="card">
+        ${this.auto.map((eachAuto) =>
+          eachAuto.name != ""
+            ? html`<div class="card">
                 <div class="card-content">
                   <div class="autoInfo">
-                    <h2 >${eachAuto.name}</h2>
-                    <p >Brand: ${eachAuto.brand}</p>
-                    <p >Version: ${eachAuto.version}</p>
-                    <p >Year: ${eachAuto.year}</p>
+                    <h2>${eachAuto.name}</h2>
+                    <p>Brand: ${eachAuto.brand}</p>
+                    <p>Version: ${eachAuto.version}</p>
+                    <p>Year: ${eachAuto.year}</p>
                   </div>
                   <img class="autoImage" src=${eachAuto.img} />
                 </div>
               </div>`
-        :html`` )}
+            : html``
+        )}
       </div>
     `;
   }
@@ -96,7 +92,7 @@ export default class ShowAutos extends LitElement {
       version: this.version,
       img: this.imageAuto,
     });
-    console.log(this.auto);
+    this._sendAutos(this.auto);
   }
   pickAnImage() {
     this.myArray = [
@@ -111,5 +107,15 @@ export default class ShowAutos extends LitElement {
     this.rand = Math.floor(Math.random() * this.myArray.length);
     this.imageAuto = this.myArray[this.rand];
   }
+  _sendAutos(autos) {
+    this.dispatchEvent(
+      new CustomEvent("theAutos", {
+        detail: { autos },
+        bubbles: true,
+        composed: true,
+      })
+    );
+  }
 }
+
 customElements.define("show-autos", ShowAutos);
