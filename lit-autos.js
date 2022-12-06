@@ -60,28 +60,28 @@ export class LitAutos extends LitElement {
         background-image: url("https://media.autoexpress.co.uk/image/private/s--jf7Mv70j--/v1562251437/autoexpress/images/car_photo_259188.jpg");
         background-size: 90vw 50vh;
         display: flex;
-
         width: 90vw;
         height: 40vh;
         align-items: flex-start;
         font-weight: bold;
         padding: 2em;
-        font-size: 1.5em;
+        font-size: 2em;
       }
       .registerButton {
         background-color: white;
         border-radius: 20px;
-        font-size: 0.8em;
+        font-size: 1.2em;
         border: none;
+        margin-left: 2em;
+        justify-self: center;
       }
       .select {
         font-size: 1.5em;
       }
       .filter {
-        width: 15em;
         border: 3px solid wheat;
         color: black;
-        font-size: 1.5em;
+        font-size: 2em;
       }
       .autoImage {
         width: 20em;
@@ -110,14 +110,20 @@ export class LitAutos extends LitElement {
         grid-template-rows: 3em 2em;
         justify-items: center;
         align-items: center;
+        font-size: 1.5em;
       }
-      .register {
+      .back {
         background-color: white;
-        border-radius: 20px;
+        border-radius: 25px;
         font-size: 0.8em;
         border: none;
-        height:6em;
-        font-size:1.5em;
+        font-size: 2em;
+        margin-top:2em;
+        width:5em;
+        box-shadow: .5em .5em 1em gray;
+      }
+      option {
+        font-size: 1em;
       }
     `,
   ];
@@ -125,13 +131,15 @@ export class LitAutos extends LitElement {
   render() {
     return html`
       ${this.showFilteredInfo
-        ? html` <div class="autosContainer">
-            <button class="register" @click=${this.refresh}>Back</button>
-            ${this.filteredAutos.map(
-              (eachAuto) =>
-                html`
-                  ${eachAuto.brand != undefined
-                    ? html`
+        ? html` <div>
+              <button class="back" @click=${this.refresh}>Back</button>
+            </div>
+            <div class="autosContainer">
+              ${this.filteredAutos.map(
+                (eachAuto) =>
+                  html`
+                    ${eachAuto.brand != undefined
+                      ? html`
                <div class="card">${console.log(eachAuto.name, "eachAuto.name")}
                   <div class="card-content">
                     <div class="autoInfo">
@@ -144,10 +152,10 @@ export class LitAutos extends LitElement {
                   </div>
                 </div>${console.log(this.showFilteredInfo, "booleano")}
                 </div>`
-                    : html`<p></p>`}
-                `
-            )}
-          </div>`
+                      : html``}
+                  `
+              )}
+            </div>`
         : html` <div class="registerForm">
               <input-info inputName="autoName" labelName="Name :"></input-info>
               <input-info inputName="autoYear" labelName="Year :"> </input-info>
