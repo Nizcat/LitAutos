@@ -79,8 +79,9 @@ export class LitAutos extends LitElement {
       }
       .filter {
         width: 15em;
-        border: 3px solid blue;
+        border: 3px solid wheat;
         color: black;
+        font-size: 1.5em;
       }
       .autoImage {
         width: 20em;
@@ -110,6 +111,14 @@ export class LitAutos extends LitElement {
         justify-items: center;
         align-items: center;
       }
+      .register {
+        background-color: white;
+        border-radius: 20px;
+        font-size: 0.8em;
+        border: none;
+        height:6em;
+        font-size:1.5em;
+      }
     `,
   ];
 
@@ -117,10 +126,13 @@ export class LitAutos extends LitElement {
     return html`
       ${this.showFilteredInfo
         ? html` <div class="autosContainer">
+            <button class="register" @click=${this.refresh}>Back</button>
             ${this.filteredAutos.map(
               (eachAuto) =>
                 html`
-                <div class="card">
+                  ${eachAuto.brand != undefined
+                    ? html`
+               <div class="card">${console.log(eachAuto.name, "eachAuto.name")}
                   <div class="card-content">
                     <div class="autoInfo">
                       <h2>${eachAuto.name}</h2>
@@ -131,8 +143,9 @@ export class LitAutos extends LitElement {
                     <img class="autoImage" src=${eachAuto.img} />
                   </div>
                 </div>${console.log(this.showFilteredInfo, "booleano")}
-                </div>
-              `
+                </div>`
+                    : html`<p></p>`}
+                `
             )}
           </div>`
         : html` <div class="registerForm">
@@ -183,6 +196,10 @@ export class LitAutos extends LitElement {
     this.brand = this.brand3;
     this.version = this.version4;
     this.tofilterAutos = this.theAutos;
+  }
+
+  refresh() {
+    window.location.reload();
   }
 
   sortingAutos() {
